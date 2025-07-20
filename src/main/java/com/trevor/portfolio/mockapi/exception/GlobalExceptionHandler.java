@@ -38,7 +38,12 @@ public class GlobalExceptionHandler {
             .map(err -> err.getField() + ": " + err.getDefaultMessage())
             .collect(Collectors.toList());
         
-        return buildResponse(HttpStatus.BAD_REQUEST, "Validation Failed", "Imput Validation Failed", Map.of("messages", errors));
+        return buildResponse(
+            HttpStatus.BAD_REQUEST, 
+            "Validation Failed", 
+            "Imput Validation Failed", 
+            Map.of("messages", errors)
+        );
     }
 
     // If all else fails: generic fallback exception
@@ -47,13 +52,14 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected Error", ex.getMessage());
     }
 
-    // Primary signature for exceptions without extraData
+    // Overloaded signature for exceptions without extraData
     private ResponseEntity<Map<String, Object>> buildResponse(HttpStatus status, String error, String message) {
             return buildResponse(status, error, message, null);
         }
 
-    // Secondary signature for exceptions with extraData
+    // Primary signature for exceptions with extraData
     private ResponseEntity<Map<String, Object>> buildResponse(HttpStatus status, String error, String message, Map<String, Object> extraData) {
+        
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("status", status.value());
