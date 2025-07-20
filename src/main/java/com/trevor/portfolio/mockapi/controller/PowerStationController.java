@@ -2,9 +2,12 @@ package com.trevor.portfolio.mockapi.controller;
 
 import com.trevor.portfolio.mockapi.model.PowerStation;
 import com.trevor.portfolio.mockapi.service.PowerStationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -29,7 +32,7 @@ public class PowerStationController {
     }
 
     @PostMapping
-    public PowerStation createPowerStation(@RequestBody PowerStation station) {
+    public PowerStation createPowerStation(@Valid @RequestBody PowerStation station) {
         return powerStationService.createPowerStation(station);
     }
 
