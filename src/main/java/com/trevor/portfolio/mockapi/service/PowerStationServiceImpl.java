@@ -1,5 +1,6 @@
 package com.trevor.portfolio.mockapi.service;
 
+import com.trevor.portfolio.mockapi.exception.ResourceNotFoundException;
 import com.trevor.portfolio.mockapi.model.PowerStation;
 import com.trevor.portfolio.mockapi.repository.PowerStationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,11 @@ public class PowerStationServiceImpl implements PowerStationService {
 
     @Override 
     public PowerStation getPowerStationById(Long id) {
-        return repository.findById(id).orElse(null);
+        return repository
+                .findById(id)
+                .orElseThrow(() -> 
+                    new ResourceNotFoundException("Powerstation not found with id: " + id
+                ));
     }
 
     @Override

@@ -23,14 +23,9 @@ public class PowerStationController {
         return powerStationService.getAllPowerStations();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PowerStation> getPowerStationById(@PathVariable Long id) {
-        PowerStation station = powerStationService.getPowerStationById(id);
-        if (station != null) {
-            return ResponseEntity.ok(station);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping
+    public PowerStation getPowerStationById(@PathVariable Long id) {
+        return powerStationService.getPowerStationById(id);
     }
 
     @PostMapping
