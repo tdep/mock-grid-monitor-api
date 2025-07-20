@@ -19,11 +19,11 @@ public class PowerStationController {
     }
 
     @GetMapping
-    public List<PowerStation> getAllPowerrStations() {
+    public List<PowerStation> getAllPowerStations() {
         return powerStationService.getAllPowerStations();
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public PowerStation getPowerStationById(@PathVariable Long id) {
         return powerStationService.getPowerStationById(id);
     }
