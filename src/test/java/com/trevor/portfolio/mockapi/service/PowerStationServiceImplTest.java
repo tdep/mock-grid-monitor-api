@@ -102,4 +102,15 @@ public class PowerStationServiceImplTest {
         assertThrows(ResourceNotFoundException.class, () ->
             powerStationService.deletePowerStation(1L));
     }
+
+    @Test
+    void deletePowerStation_shouldDelete_whenIdExists() {
+        Long id = 1L;
+        PowerStation existing = new PowerStation();
+        when(powerStationRepository.findById(id)).thenReturn(Optional.of(existing));
+
+        powerStationService.deletePowerStation(id);
+
+        verify(powerStationRepository).deleteById(id);
+    }
 }
