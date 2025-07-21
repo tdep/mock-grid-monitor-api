@@ -35,7 +35,7 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 ### API Endpoints
 
 | Method | Endpoint                  | Description                |
-|:========|:===========================|:============================|
+|--------|---------------------------|----------------------------|
 | GET    | `/api/powerstations`      | List all power stations    |
 | GET    | `/api/powerstations/{id}` | Get a single station by ID |
 | POST   | `/api/powerstations`      | Create a new power station |
@@ -46,7 +46,7 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 ### Power Station Model
 
 | Field        | Type     | Description                        | Validation                   |
-|:==============|:==========|:====================================|:==============================|
+|--------------|----------|------------------------------------|------------------------------|
 | `id`         | `Long`   | Unique identifier (auto-generated) | *None*                       |
 | `name`       | `String` | Name of the power station          | Required, max 100 characters |
 | `capacityMw` | `Double` | Energy capacity in megawatts (MW)  | Required, must be positive   |
