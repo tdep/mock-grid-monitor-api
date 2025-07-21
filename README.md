@@ -4,13 +4,16 @@
 This demo API is a simple Spring Boot RESTful service that is used to manage data for imaginary power stations. It supports full CRUD operations, input validation, and error handling. Built using Hibernate/JPA, H2, Mockito, and Maven.
 
 ===
+
 ### Features
 - Create, Read, Update, Delete power station records
 - Input validation with detail error responses
 - Global exception handling with related HTTP status codes and custom messaging
 - Unit and integration tests using JUnit and Mockito
 - Built using Java, Spring Boot, Hibernate/JPA, and H2 (in-memory DB for tests)
+
 ===
+
 ### Technologies
 - Java 17
 - Spring Boot 3.5.3
@@ -21,7 +24,9 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 - JUnit 5, Mockito (for testing)
 - Lombok
 - MockMvc (for integration testing)
+
 ===
+
 ### Getting Started
 #### Prrerequisites
 - Java 17+ installed
@@ -31,7 +36,9 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 2. Navigate to project directory
 3. Build and run: `mvn spring-boot:run`
 4. The API will be available at `http://localhost:8080/api/powerstations`
+
 ===
+
 ### API Endpoints
 
 | Method | Endpoint                  | Description                |
@@ -43,6 +50,7 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 | DELETE | `/api/powerstations/{id}` | Delete a power station     |
 
 ===
+
 ### Power Station Model
 
 | Field        | Type     | Description                        | Validation                   |
@@ -106,6 +114,7 @@ curl -X DELETE http://localhost:8080/api/powerstations/1
 ```
 
 ===
+
 ### Validation & Error Handling
 - Validates incoming data with annotations such as `@NotBlank` and `@Positive`
 - Returns `HTTP 400` with detailed messages for validation failures
@@ -113,10 +122,12 @@ curl -X DELETE http://localhost:8080/api/powerstations/1
 - Returns `HTTP 500` for unexpected errors
 
 ===
+
 ### Running Tests
 Run all tests with: `mvn test`
 
 ===
+
 ### Notes and Future Work
 - Currently uses an in-memory H2 database for testing - can be configured for persistent DB
 - Authentication and security are not included by could be added
