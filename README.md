@@ -3,7 +3,7 @@
 
 This demo API is a simple Spring Boot RESTful service that is used to manage data for imaginary power stations. It supports full CRUD operations, input validation, and error handling. Built using Hibernate/JPA, H2, Mockito, and Maven.
 
-===
+---
 
 ### Features
 - Create, Read, Update, Delete power station records
@@ -12,7 +12,7 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 - Unit and integration tests using JUnit and Mockito
 - Built using Java, Spring Boot, Hibernate/JPA, and H2 (in-memory DB for tests)
 
-===
+---
 
 ### Technologies
 - Java 17
@@ -25,7 +25,7 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 - Lombok
 - MockMvc (for integration testing)
 
-===
+---
 
 ### Getting Started
 #### Prrerequisites
@@ -37,7 +37,7 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 3. Build and run: `mvn spring-boot:run`
 4. The API will be available at `http://localhost:8080/api/powerstations`
 
-===
+---
 
 ### API Endpoints
 
@@ -49,7 +49,7 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
 | PUT    | `/api/powerstations/{id}` | Update an existing station |
 | DELETE | `/api/powerstations/{id}` | Delete a power station     |
 
-===
+---
 
 ### Power Station Model
 
@@ -71,6 +71,8 @@ This demo API is a simple Spring Boot RESTful service that is used to manage dat
     "status": "Active"
 }
 ```
+
+---
 
 ### Example Requests (cURL)
 
@@ -113,7 +115,7 @@ curl -X PUT http://localhost:8080/api/powerstations/1 \
 curl -X DELETE http://localhost:8080/api/powerstations/1
 ```
 
-===
+---
 
 ### Validation & Error Handling
 - Validates incoming data with annotations such as `@NotBlank` and `@Positive`
@@ -121,12 +123,12 @@ curl -X DELETE http://localhost:8080/api/powerstations/1
 - Returns `HTTP 404` if a resource is not found
 - Returns `HTTP 500` for unexpected errors
 
-===
+---
 
 ### Running Tests
 Run all tests with: `mvn test`
 
-===
+---
 
 ### Notes and Future Work
 - Currently uses an in-memory H2 database for testing - can be configured for persistent DB
