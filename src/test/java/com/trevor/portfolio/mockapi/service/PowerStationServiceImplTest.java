@@ -94,4 +94,12 @@ public class PowerStationServiceImplTest {
         assertThrows(ResourceNotFoundException.class, () ->
             powerStationService.updatePowerStation(1L, updated));
     }
+
+    @Test
+    void deletePowerStation_shouldThrowException_whenIdNotFound() {
+        when(powerStationRepository.findById(1L)).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () ->
+            powerStationService.deletePowerStation(1L));
+    }
 }

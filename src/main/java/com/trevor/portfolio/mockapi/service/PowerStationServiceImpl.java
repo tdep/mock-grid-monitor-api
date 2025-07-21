@@ -53,6 +53,8 @@ public class PowerStationServiceImpl implements PowerStationService {
 
     @Override
     public void deletePowerStation(Long id) {
+        PowerStation station = repository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Power station not found with id: " + id));
         repository.deleteById(id);
     }
 }
