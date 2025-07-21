@@ -39,6 +39,19 @@ public class PowerStationServiceImpl implements PowerStationService {
     }
 
     @Override
+    public PowerStation updatePowerStation(Long id, PowerStation updatedStation) {
+        PowerStation existing = repository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Power station not found with id: " + id));
+
+        existing.setName(updatedStation.getName());
+        existing.setCapacityMw(updatedStation.getCapacityMw());
+        existing.setRegion(updatedStation.getRegion());
+        existing.setStatus(updatedStation.getStatus());
+
+        return repository.save(existing);
+    }
+
+    @Override
     public void deletePowerStation(Long id) {
         repository.deleteById(id);
     }

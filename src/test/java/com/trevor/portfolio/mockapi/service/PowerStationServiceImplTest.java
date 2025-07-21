@@ -69,5 +69,20 @@ public class PowerStationServiceImplTest {
         verify(powerStationRepository, times(1)).save(powerStation);
     }
 
-    
+    @Test
+    void updatePowerStation_shouldUpdateAndReturnPowerStation_whenIdExists() {
+        PowerStation existing = new PowerStation(1L, "Old Station", 100.0, "Eastern Ohio", "Active");
+        PowerStation updated = new PowerStation(null, "Updated Station", 150.0, "Eastern Ohio", "Active");
+        PowerStation saved = new PowerStation(1L, "Updated Station", 150.0, "Eastern Ohio", "Active");
+
+        when(powerStationRepository.findById(1L)).thenReturn(Optional.of(existing));
+        when(powerStationRepository.save(any(PowerStation.class))).thenReturn(saved);
+
+        PowerStation result = powerStationService.updatePowerStation(1L, updated);
+
+        assertEquals("Update Station", result.getName());
+        assertEquals(150.0, result.getCapacityMw());
+        assertEquals("Eastern Ohio", result.getRegion());
+        assertEquals("Active", result.getStatus());
+    }
 }

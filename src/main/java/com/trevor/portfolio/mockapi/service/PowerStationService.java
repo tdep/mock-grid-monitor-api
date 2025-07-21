@@ -8,5 +8,6 @@ public interface PowerStationService {
     List<PowerStation> getAllPowerStations();
     PowerStation getPowerStationById(Long id);
     PowerStation createPowerStation(PowerStation station);
+    PowerStation updatePowerStation(Long id, PowerStation updatedStation);
     void deletePowerStation(Long id);
 }

@@ -36,6 +36,12 @@ public class PowerStationController {
         return powerStationService.createPowerStation(station);
     }
 
+    @PutMapping
+    public ResponseEntity<PowerStation> updatePowerStation(@PathVariable Long id, @Valid @RequestBody PowerStation powerStation) {
+            PowerStation updated = powerStationService.updatePowerStation(id, powerStation);
+            return ResponseEntity.ok(updated);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePowerStation(@PathVariable Long id) {
         powerStationService.deletePowerStation(id);
