@@ -6,9 +6,11 @@ import com.trevor.portfolio.mockapi.service.PowerStationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import jakarta.validation.Valid;
 
+import java.net.http.HttpResponse.ResponseInfo;
 import java.util.List;
 
 @RestController
@@ -22,18 +24,21 @@ public class PowerStationController {
     }
 
     @GetMapping
-    public List<PowerStation> getAllPowerStations() {
-        return powerStationService.getAllPowerStations();
+    public ResponseEntity<List<PowerStation>> getAllPowerStations() {
+        List<PowerStation> powerStations = powerStationService.getAllPowerStations();
+        return ResponseEntity.ok(powerStations);
     }
 
     @GetMapping("/{id}")
-    public PowerStation getPowerStationById(@PathVariable Long id) {
-        return powerStationService.getPowerStationById(id);
+    public ResponseEntity<PowerStation> getPowerStationById(@PathVariable Long id) {
+        PowerStation found = powerStationService.getPowerStationById(id);
+        return ResponseEntity.ok(found);
     }
 
     @PostMapping
-    public PowerStation createPowerStation(@Valid @RequestBody PowerStation station) {
-        return powerStationService.createPowerStation(station);
+    public ResponseEntity<PowerStation> createPowerStation(@Valid @RequestBody PowerStation station) {
+        PowerStation created = powerStationService.createPowerStation(station);
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
     @PutMapping
