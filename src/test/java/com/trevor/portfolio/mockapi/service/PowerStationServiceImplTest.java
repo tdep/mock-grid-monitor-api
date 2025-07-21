@@ -80,9 +80,18 @@ public class PowerStationServiceImplTest {
 
         PowerStation result = powerStationService.updatePowerStation(1L, updated);
 
-        assertEquals("Update Station", result.getName());
+        assertEquals("Updated Station", result.getName());
         assertEquals(150.0, result.getCapacityMw());
         assertEquals("Eastern Ohio", result.getRegion());
         assertEquals("Active", result.getStatus());
+    }
+
+    @Test
+    void updatePowerStation_shouldThrowException_whenIdNotFound() {
+        PowerStation updated = new PowerStation(null, "Updated Station", 100.0, "Central Maine", "Innactive");
+        when(powerStationRepository.findById(1L)).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () ->
+            powerStationService.updatePowerStation(1L, updated));
     }
 }
